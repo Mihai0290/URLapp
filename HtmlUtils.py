@@ -10,11 +10,16 @@ def get_html(URL: str):
 def get_title(URL: str):
     """This finds the title of the given html document"""
     html_doc = get_html(URL)
-    return html_doc.title.string
+    title = html_doc.find('title')
+    if title:
+        return title.string
+    return None
 
 
 def get_description_meta(URL: str):
     """ This method gets the description meta of the URL given """
     html_doc = get_html(URL)
     description = html_doc.find("meta", {"name":"description"})
-    return description['content']
+    if description:
+        return description['content']
+    return None
