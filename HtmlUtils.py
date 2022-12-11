@@ -14,7 +14,7 @@ def get_title(URL: str):
 
 
 def get_description_meta(URL: str):
-    """ This method gets the description mete of the URL given """
+    """ This method gets the description meta of the URL given """
     html_doc = get_html(URL)
     description = html_doc.find("meta", {"name":"description"})
     return description['content']
