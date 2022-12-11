@@ -1,3 +1,5 @@
+"""This module contains useful functions for getting information about a webpage like title or description."""
+
 from bs4 import BeautifulSoup as bs
 import requests
 
@@ -8,7 +10,7 @@ def get_html(URL: str):
 
 
 def get_title(URL: str):
-    """This finds the title of the given html document"""
+    """This function gets the title of a webpage using the given URL. Returns None if not found."""
     html_doc = get_html(URL)
     title = html_doc.find('title')
     if title:
@@ -17,7 +19,7 @@ def get_title(URL: str):
 
 
 def get_description_meta(URL: str):
-    """ This method gets the description meta of the URL given """
+    """This function gets the description meta of a webpage using the given URL. Returns None if not found."""
     html_doc = get_html(URL)
     description = html_doc.find("meta", {"name":"description"})
     if description:

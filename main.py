@@ -8,7 +8,6 @@ def main():
     URL = config_data['URL']
     title = get_title(URL)
     description = get_description_meta(URL)
-
     if title:
         print("The title of the page is:", title)
     else:
