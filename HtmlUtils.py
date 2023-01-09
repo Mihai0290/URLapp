@@ -2,7 +2,23 @@
 
 from bs4 import BeautifulSoup as bs
 import requests
+import sys
+import time
 
+
+def log_time(function):
+    def w_func(*args, **kwargs):
+        t1 = time.time()
+        result = function(*args, **kwargs)
+        t2 = time.time()
+        if len(sys.argv) > 1:
+            if str(sys.argv[1]) == "-log":
+                print(f"Request took {round(t2 - t1, 2)} seconds.")
+        return result
+    return w_func
+
+
+@log_time
 def get_html(URL: str):
     """This returns the html of the given URL"""
     html_doc = bs(requests.get(URL).text, "html.parser")
